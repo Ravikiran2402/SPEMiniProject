@@ -1,0 +1,23 @@
+{
+  "name": "miniproject_gui",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.5",
+    "autoprefixer": "^10.2.4",
+    "postcss": "^8.2.6",
+    "svg-inline-loader": "^0.8.2",
+    "tailwindcss": "^2.0.3",
+    "vite": "^2.0.0",
+    "vite-plugin-proxy": "^0.5.0"
+  }
+}
