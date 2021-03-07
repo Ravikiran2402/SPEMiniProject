@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
         stage('Clone Git') {
             steps {
                 git 'https://github.com/Ravikiran2402/SPETestProject.git'
@@ -39,12 +34,16 @@ pipeline {
         }
         stage('Install Node packages') {
             steps {
-                sh 'npm install'
+                dir('src/main/ui') {
+                    sh 'npm install'
+                }
             }
         }
         stage('Run front end') {
             steps {
-                sh 'npm run dev'
+                dir('src/main/ui') {
+                    sh 'npm run dev'
+                }
             }
         }
     }
