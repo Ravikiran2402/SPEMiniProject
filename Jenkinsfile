@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Git') {
             steps {
-                git 'https://github.com/Ravikiran2402/SPETestProject.git'
+                git 'https://github.com/Ravikiran2402/SPEMiniProject.git'
             }
         }
         stage('Clean') {
