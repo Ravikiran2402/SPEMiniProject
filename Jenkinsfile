@@ -34,11 +34,9 @@ pipeline {
                 }
             }
         }
-        stage('Run front end') {
+        stage('Package') {
             steps {
-                dir('src/main/ui') {
-                    sh 'npm run dev'
-                }
+                sh 'sudo mvn package'
             }
         }
     }
