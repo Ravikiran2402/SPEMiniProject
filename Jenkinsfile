@@ -27,11 +27,6 @@ pipeline {
                 sh 'mvn install'
             }
         }
-        stage('Package') {
-            steps {
-                sh 'mvn package'
-            }
-        }
         stage('Install Node packages') {
             steps {
                 dir('src/main/ui') {
