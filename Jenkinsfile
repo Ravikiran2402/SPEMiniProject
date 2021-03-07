@@ -9,22 +9,22 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                sh 'mvn clean'
+                sh 'sudo mvn clean'
             }
         }
         stage('Validate') {
             steps {
-                sh 'mvn validate'
+                sh 'sudo mvn validate'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'sudo mvn test'
             }
         }
         stage('Install') {
             steps {
-                sh 'mvn install'
+                sh 'sudo mvn install'
             }
         }
         stage('Install Node packages') {
