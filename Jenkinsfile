@@ -27,5 +27,24 @@ pipeline {
                 sh 'sudo mvn install'
             }
         }
+        stage('Install Node packages') {
+            steps {
+                dir('src/main/ui') {
+                    sh 'npm clean-install'
+                }
+            }
+        }
+        stage('Making Production build for frontend') {
+                    steps {
+                        dir('src/main/ui') {
+                            sh 'npm run build'
+                        }
+                    }
+                }
+        stage('Package') {
+            steps {
+                sh 'sudo mvn package'
+            }
+        }
     }
 }
