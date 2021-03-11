@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean workspace') {
+            deleteDir()
+        }
         stage('Clone Git') {
             steps {
                 git 'https://github.com/Ravikiran2402/SPEMiniProject.git'
