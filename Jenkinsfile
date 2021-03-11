@@ -3,7 +3,9 @@ pipeline {
 
     stages {
         stage('Clean workspace') {
-            deleteDir()
+            steps{
+                deleteDir()
+            }
         }
         stage('Clone Git') {
             steps {
