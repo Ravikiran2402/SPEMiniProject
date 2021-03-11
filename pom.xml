@@ -40,15 +40,6 @@
         </dependency>
     </dependencies>
 
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
-
     <build>
         <plugins>
             <plugin>
@@ -124,6 +115,9 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
+                <configuration>
+                    <workingDirectory>src/main/ui</workingDirectory>
+                </configuration>
                 <executions>
                     <execution>
                         <id>gulp install</id>
@@ -136,7 +130,7 @@
                             <arguments>
                                 <argument>install</argument>
                                 <argument>gulp</argument>
-                                <argument>--save-dev</argument>
+                                <argument>--save</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -151,7 +145,7 @@
                             <arguments>
                                 <argument>install</argument>
                                 <argument>del</argument>
-                                <argument>--save-dev</argument>
+                                <argument>--save</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -166,7 +160,7 @@
                             <arguments>
                                 <argument>install</argument>
                                 <argument>fancy-log</argument>
-                                <argument>--save-dev</argument>
+                                <argument>--save</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -183,7 +177,7 @@
                             <arguments>
                                 <argument>install</argument>
                                 <argument>gulp-zip</argument>
-                                <argument>--save-dev</argument>
+                                <argument>--save</argument>
                             </arguments>
                         </configuration>
                     </execution>
@@ -198,7 +192,7 @@
                             <arguments>
                                 <argument>install</argument>
                                 <argument>webpack-stream</argument>
-                                <argument>--save-dev</argument>
+                                <argument>--save</argument>
                             </arguments>
                         </configuration>
                     </execution>
