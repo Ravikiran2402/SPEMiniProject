@@ -11,16 +11,10 @@
                 </div>
             </div>
             <div class="relative flex flex-row mx-auto my-auto space-x-10">
-                <button class="relative bg-green-400 w-1/4 h-full object-cover px-4 py-4 rounded-md" v-on:click='rootButtonLog()'>
-                    <span class="">
-                        <i class="fas fa-square-root-alt text-xl text-black"></i>
-                        <!-- <svg-icon icon="src/assets/square-root-mathematical-symbol.svg" /> -->
-                    </span>
-                    
-                </button>
+                <button class="relative bg-green-400 w-1/4 h-full object-cover px-4 py-4 rounded-md text-lg text-black font-bold" v-on:click='rootButtonLog()'>sqrt(x)</button>
                 <button class="relative bg-green-400 w-1/4 h-full object-cover px-4 py-4 rounded-md text-lg text-black font-bold" v-on:click='factorialButtonLog()'>x!</button>
                 <button class="relative bg-green-400 w-1/4 h-full object-cover px-4 py-4 rounded-md text-lg text-black font-bold" v-on:click='logButtonLog()'>ln(x)</button>
-                <button class="relative bg-green-400 w-1/4 h-full object-cover px-4 py-4 rounded-md text-lg text-black font-bold" v-on:click='powerButtonLog()'>x^4</button>
+                <button class="relative bg-green-400 w-1/4 h-full object-cover px-4 py-4 rounded-md text-lg text-black font-bold" v-on:click='powerButtonLog()'>x^{{exponent}}</button>
             </div>
             <div class="relative flex flex-row my-5 mx-5 h-1/4 justify-items-center">
                 <div class="relative flex justify-center bg-gray-400 w-1/5 mx-auto my-auto rounded-full rounded-r-none text-black font-bold text-xl">Result = </div>
