@@ -120,21 +120,6 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>gulp install</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>install</argument>
-                                <argument>gulp</argument>
-                                <argument>--save</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
                         <id>del install</id>
                         <phase>initialize</phase>
                         <goals>
@@ -145,37 +130,6 @@
                             <arguments>
                                 <argument>install</argument>
                                 <argument>del</argument>
-                                <argument>--save</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>log install</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>install</argument>
-                                <argument>fancy-log</argument>
-                                <argument>--save</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>gulp-zip install</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>npm</executable>
-                            <arguments>
-                                <argument>install</argument>
-                                <argument>gulp-zip</argument>
                                 <argument>--save</argument>
                             </arguments>
                         </configuration>
@@ -193,17 +147,6 @@
                                 <argument>webpack-stream</argument>
                                 <argument>--save</argument>
                             </arguments>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>gulp build</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>gulp</executable>
                         </configuration>
                     </execution>
                 </executions>
