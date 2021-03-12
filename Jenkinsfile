@@ -1,15 +1,17 @@
 pipeline {
+
+    environment {
+        registry = "ravikiran2402/scientific-caclulator"
+        registryCredential = 'ravidh'
+        dockerImage = ''
+    }
+
     agent any
 
     stages {
-        stage('Clean workspace') {
-            steps{
-                deleteDir()
-            }
-        }
         stage('Clone Git') {
             steps {
-                git 'https://github.com/Ravikiran2402/SPEMiniProject.git'
+                git 'https://github.com/Ravikiran2402/SPEMiniProject'
             }
         }
         stage('Clean') {
@@ -27,28 +29,63 @@ pipeline {
                 sh 'sudo mvn test'
             }
         }
-        stage('Install') {
-            steps {
-                sh 'sudo mvn install'
-            }
-        }
         stage('Install Node packages') {
             steps {
                 dir('src/main/ui') {
-                    sh 'npm clean-install'
+                    sh 'npm install'
                 }
             }
         }
         stage('Making Production build for frontend') {
-                    steps {
-                        dir('src/main/ui') {
-                            sh 'npm run build'
+            steps {
+                dir('src/main/ui') {
+                    sh 'npm run build'
+                }
+            }
+        }
+        stage('Maven Install') {
+            steps {
+                sh 'sudo mvn install'
+            }
+        }
+        stage('Build docker image') {
+            steps { 
+                dir('docker'){
+                    script {
+                        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    }
+                }
+            } 
+        }
+        stage('Push image'){
+            steps {
+                dir('docker'){
+                    script {
+                        docker.withRegistry( '', registryCredential ) {
+                            dockerImage.push()
+                        
                         }
                     }
                 }
-        stage('Package') {
-            steps {
-                sh 'sudo mvn package'
+            }
+        }
+        stage('Remove redundant docker images'){
+            steps{
+                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh "docker image prune"
+            }
+        }
+        stage('Deploy on Rundeck'){
+            steps{
+                script{
+                    step([
+                        $class: "RundeckNotifier",
+                        rundeckInstance: "rundeck-instance",
+                        options: """ tag=$BUILD_NUMBER""",
+                        jobId: "b8a26087-f26f-4997-92a3-64dfc247a722",
+                        shouldFailTheBuild: true,
+                    ])
+                }
             }
         }
     }
