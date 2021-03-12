@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Git') {
             steps {
-                git 'https://github.com/Ravikiran2402/SPEMiniProject.git'
+                git branch: 'mnv', url: 'https://github.com/Ravikiran2402/SPEMiniProject'
             }
         }
         stage('Clean and install') {
