@@ -7,12 +7,12 @@ pipeline {
                 git branch: 'mnv', url: 'https://github.com/Ravikiran2402/SPEMiniProject'
             }
         }
-        stage('Clean and install') {
+        stage('Maven Clean and install') {
             steps {
                 sh 'sudo mvn clean install'
             }
         }
-        stage('Clean static folder') {
+        stage('Clean static dir contents') {
             steps {
                 dir('src/main/resources/static/') {
                     sh 'rm -rf *'
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Copy vue code to static dir') {
             steps{
-                sh 'cp src/main/ui/dist/**/* src/main/resources/static/'
+                sh 'cp src/main/ui/dist/* src/main/resources/static/'
             }
         }
     }
