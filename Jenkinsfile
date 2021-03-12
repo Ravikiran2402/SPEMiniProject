@@ -49,22 +49,13 @@ pipeline {
             }
         }
         stage('Build docker image') {
-            steps{
-                script {
-                    dockerImg = docker.build registry + ":$BUILD_NUMBER"
-                }
-            } 
+            dockerImg = docker.build(registry)
         }
         stage('Push image'){
-            steps{
-                script {
-                    docker.withRegistry('', dockerCredential ) {
-                        dockerImg.push()
-                        pushLatestBuild = "docker push "+registry
-                        sh pushLatestBuild
-                    }
-                }
-            }   
+            docker.withRegistry('https://registry.hub.docker.com', dockerCredential ) {
+                dockerImg.push("${env.BUILD_NUMBER}")
+                dockerImg.push("latest")
+            } 
         }
     }
 }
