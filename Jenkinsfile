@@ -15,7 +15,7 @@ pipeline {
         stage('Clean static folder') {
             steps {
                 dir('src/main/resources/static/') {
-                    deleteDir()
+                    sh 'rm -rf *'
                 }
             }
         }
