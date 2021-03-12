@@ -7,24 +7,9 @@ pipeline {
                 git 'https://github.com/Ravikiran2402/SPEMiniProject.git'
             }
         }
-        stage('Clean') {
+        stage('Clean and install') {
             steps {
-                sh 'sudo mvn clean'
-            }
-        }
-        stage('Validate') {
-            steps {
-                sh 'sudo mvn validate'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'sudo mvn test'
-            }
-        }
-        stage('Install') {
-            steps {
-                sh 'sudo mvn install'
+                sh 'sudo mvn clean install'
             }
         }
         // stage('Install Node packages') {
