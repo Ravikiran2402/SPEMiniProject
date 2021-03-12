@@ -1,4 +1,11 @@
 pipeline {
+
+    environment {
+        registry = "ravikiran2402/scientific-caclulator"
+        dockerCredential = 'ravidh'
+        dockerImg = ''
+    }
+
     agent any
 
     stages {
@@ -9,7 +16,7 @@ pipeline {
         }
         stage('Clean') {
             steps {
-                sh 'sudo mvn clean install'
+                sh 'sudo mvn clean'
             }
         }
         stage('Validate') {
@@ -40,6 +47,24 @@ pipeline {
             steps {
                 sh 'sudo mvn install'
             }
+        }
+        stage('Build docker image') {
+            steps{
+                script {
+                    dockerImg = docker.build registry + ":$BUILD_NUMBER"
+                }
+            } 
+        }
+        stage('Push image'){
+            steps{
+                script {
+                    docker.withRegistry('', dockerCredential ) {
+                        dockerImg.push()
+                        pushLatestBuild = "docker push "+registry
+                        sh pushLatestBuild
+                    }
+                }
+            }   
         }
     }
 }
