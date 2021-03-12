@@ -12,5 +12,17 @@ pipeline {
                 sh 'sudo mvn clean install'
             }
         }
+        stage('Clean static folder') {
+            steps {
+                dir('src/main/resources/static/') {
+                    deleteDir()
+                }
+            }
+        }
+        stage('Copy vue code to static dir') {
+            steps{
+                sh 'cp src/main/ui/dist/**/* src/main/resources/static/'
+            }
+        }
     }
 }
