@@ -2,8 +2,8 @@ pipeline {
 
     environment {
         registry = "ravikiran2402/scientific-caclulator"
-        dockerCredential = 'ravidh'
-        dockerImg = ''
+        registryCredential = 'ravidh'
+        dockerImage = ''
     }
 
     agent any
@@ -49,13 +49,20 @@ pipeline {
             }
         }
         stage('Build docker image') {
-            dockerImg = docker.build(registry)
+            steps { 
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            } 
         }
         stage('Push image'){
-            docker.withRegistry('https://registry.hub.docker.com', dockerCredential ) {
-                dockerImg.push("${env.BUILD_NUMBER}")
-                dockerImg.push("latest")
-            } 
+            steps {
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                    
+                }
+            }
         }
     }
 }
