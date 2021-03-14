@@ -18,7 +18,7 @@ public class Calculator {
         return ret_val;
     }
 
-    public long factorial(int n) {
+    public long factorial(double n) {
         logger.info("[FACTORIAL_FUNC - Request] : "+n);
         if (n < 0) {
             logger.info("[FACTORIAL_FUNC - Invalid Request] : "+n);
