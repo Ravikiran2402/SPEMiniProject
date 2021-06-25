@@ -9,11 +9,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone Git') {
-            steps {
-                git 'https://github.com/Ravikiran2402/SPEMiniProject'
-            }
-        }
         stage('Clean') {
             steps {
                 sh 'sudo mvn clean'
